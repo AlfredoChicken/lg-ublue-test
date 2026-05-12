@@ -1,6 +1,7 @@
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
 COPY build_files /
+     nordvpn.yml /usr/share/ublue-os/just/nordvpn.just
 
 # Base Image
 FROM ghcr.io/ublue-os/bazzite-dx-nvidia:stable
