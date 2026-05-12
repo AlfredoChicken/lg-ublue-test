@@ -1,7 +1,6 @@
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
 COPY build_files /
-     nordvpn.yml /usr/share/ublue-os/just/nordvpn.just
 
 # Base Image
 FROM ghcr.io/ublue-os/bazzite-dx-nvidia:stable
@@ -39,6 +38,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf config-manager --add-repo https://repo.nordvpn.com/yum/nordvpn/centos/x86_64 && \
     rpm-ostreee install nordvpn && \
     systemctl enable nordvpn.service
+
+COPY nordvpn.yml /usr/share/ublue-os/just/nordvpn.just
     
 ### LINTING
 ## Verify final image and contents are correct.
