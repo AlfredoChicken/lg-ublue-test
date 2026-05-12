@@ -4,6 +4,11 @@ set -ouex pipefail
 
 ### Install packages
 
+cp /ctx/nordvpn.repo /etc/yum.repos.d/nordvpn.repo
+cp /ctx/nordvpn.yml /usr/share/ublue-os/just/nordvpn.just
+
+dnf5 install -y nordvpn nordvpn-gui
+
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 # List of rpmfusion packages can be found here:
@@ -22,3 +27,4 @@ dnf5 install -y tmux
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+systemctl enable nordvpnd.service
