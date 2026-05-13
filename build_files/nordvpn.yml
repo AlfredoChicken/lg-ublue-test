@@ -1,5 +1,6 @@
 #This recipe adds the user to the nordvpn group
 setup-nordvpn:
-  echo "Adding ${USER} to the nordvpn group.
+  echo "Adding ${USER} to the nordvpn group."
+  sudo groupadd nordvpn
   sudo usermod -aG nordvpn ${USER}
   echo "Please reboot or log out for changes to take effect."
