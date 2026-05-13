@@ -34,12 +34,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/build.sh
-    rpm -v --import https://repo.nordvpn.com/gpg/nordvpn_public.asc && \
-    dnf config-manager --add-repo https://repo.nordvpn.com/yum/nordvpn/centos/x86_64 && \
-    rpm-ostreee install nordvpn && \
-    systemctl enable nordvpn.service
-
-COPY nordvpn.yml /usr/share/ublue-os/just/nordvpn.just
     
 ### LINTING
 ## Verify final image and contents are correct.
